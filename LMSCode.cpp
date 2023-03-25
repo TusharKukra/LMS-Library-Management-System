@@ -1,10 +1,13 @@
 #include <iostream.h>
 #include<conio.h>
-#include<iomanip.h>//input-output manipulator
+#include<iomanip>//input-output manipulator
 #include<stdlib.h> 
+#include <cstdlib>
 #include<string.h>
+#include <windows.h>
 #include<stdio.h>
-#include<fstream.h>
+#include<fstream>
+using namespace std;
 class book
 {
 	char bno[6];//bookno.
@@ -500,14 +503,17 @@ void modifybook()
  fp1.close();
  }
  
- 
+void moveCursorTo(int x,int y){
+	COORD position = {static_cast<SHORT>(x),static_cast<SHORT>(y)};
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), position);
+}
 void start()
-{ clrscr();
-gotoxy(35,11);
+{ system("cls");
+moveCursorTo(35,11);
 cout<<"LIBRARY";
-gotoxy(35,14);
+moveCursorTo(35,14);
 cout<<"MANAGEMENT";
-gotoxy(35,17);
+moveCursorTo(35,17);
 cout<<"SYSTEM";
 cout<<" \n  by: Chahat"; 
 getch();
